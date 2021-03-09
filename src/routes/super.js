@@ -45,7 +45,7 @@ router.delete("/delete/:name", (req, res) => {
 })
 
 // UPDATE superperson
-router.put("/update/:superperson", (req, res) => {
+router.put("/update/:name", (req, res) => {
     superperson.findOne({_id: req.body.id}).exec().then(function(superperson) {
         superperson.name = req.body.name || superperson.name;
         console.log(`Updated superperson: ${req.body.name}`)

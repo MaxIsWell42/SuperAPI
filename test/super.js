@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const Book = require('../models/super');
-const User = require('../models/user');
 chai.config.includeStack = true
 
 const expect = chai.expect
@@ -24,7 +23,7 @@ describe('API endpoints', () => {
         const mockSuper = new super({
             name: 'Batman',
             image: 'https://i.imgur.com/LDok9do.jpeg',
-            origin: 'DC Comics, Gotham City',
+            origin: 'Gotham City',
         })
         mockSuper.save()
         .then(() => {
@@ -48,8 +47,8 @@ describe('API endpoints', () => {
             if (err) { done(err) }
             expect(res).to.have.status(200)
             expect(res.body).to.be.an('object')
-            expect(res.body.title).to.be.equal('sampleTitle')
-            expect(res.body.author).to.be.equal('sampleAuthor')
+            expect(res.body.name).to.be.equal('Batman')
+            expect(res.body.origin).to.be.equal('Gotham City')
         }).catch(err => {
             console.log(err)
         })
